@@ -1,0 +1,119 @@
+.pick-points {
+  @include media('min', $viewport-post-md) {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3px 3px;
+  }
+
+  @include media('max', $viewport-md) {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+
+  &__list {
+    @include media('max', $viewport-md) {
+      width: 100%;
+      order: 2;
+    }
+  }
+
+  &__item {
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    border: 1px solid $color-service;
+    background-color: $color-base;
+    transition: background-color .5s ease 0s;
+
+    &:hover,
+    &.active {
+      background-color: $color-primary;
+    }
+  }
+
+  &__title {
+    line-height: 1.2;
+    margin-bottom: 1.2rem;
+
+    @include media('min', $viewport-post-xs) {
+      font-size: 1.8rem;
+    }
+    
+    @include media('max', $viewport-xs) {
+      font-size: 1.3rem;
+    }
+  }
+
+  &__options {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  &__option {
+    margin-right: 1.2rem;
+    line-height: 1.2;
+    border-radius: 3px;
+    padding: 0.5rem 1rem;
+    background-color: $color-service;
+
+    @include media('min', $viewport-post-xs) {
+      font-size: 1.2rem;
+    }
+    
+    @include media('max', $viewport-xs) {
+      font-size: 1.1rem;
+    }
+    
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+  &__map {
+    background-color: $color-base;
+    border: 1px solid $color-service;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+
+    @include media('min', $viewport-post-md) {
+      position: sticky;
+    }
+    
+    @include media('max', $viewport-md) {
+      width: 100%;
+      order: 1;
+      margin-bottom: 1.2rem;
+    }
+
+    @include media('min', $viewport-post-md) {
+      height: 47rem;
+    }
+    
+    @include media(null, $viewport-post-xs, $viewport-md) {
+      height: 35rem;
+    }
+    
+    @include media('max', $viewport-xs) {
+      height: 25rem;
+    }
+  }
+
+  &__marker {
+    $markerWidth: 34px;
+    $markerHeight: 34px;
+
+    width: $markerWidth;
+    height: $markerHeight;
+    background-image: url('../../assets/images/marker.svg');
+    background-repeat: no-repeat;
+    position: absolute;
+    top: calc(-1 * $markerHeight / 2);
+    left: calc(-1 * $markerWidth / 2);
+    z-index: 10;
+    cursor: pointer;
+  }
+}
